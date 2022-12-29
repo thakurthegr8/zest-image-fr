@@ -3,6 +3,7 @@ import { PlaygroundContext } from "../../../contexts/Playground";
 import playgroundActions from "../../../utils/playgroundActions";
 import Frame from "./Frame";
 import Shape from "./Shape";
+import Text from "./Text";
 
 const MenuItem = ({ menuContext }) => {
   return <button>{menuContext.text}</button>;
@@ -11,10 +12,10 @@ const MenuItem = ({ menuContext }) => {
 const PlaygroundNavigation = () => {
   const { actions } = useContext(PlaygroundContext);
   return (
-    <div className="border-b flex">
+    <div className="border-b flex items-center">
       <Frame />
       <Shape />
-      <Shape />
+      <Text />
     </div>
   );
 };

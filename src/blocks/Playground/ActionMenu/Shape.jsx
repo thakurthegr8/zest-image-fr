@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { PlaygroundContext } from "../../../contexts/Playground";
 
+
 const Shape = () => {
   const { layers, selectedShapeId, setLayers } = useContext(PlaygroundContext);
   const [currentShape, setCurrentShape] = useState(
@@ -28,6 +29,7 @@ const Shape = () => {
   return (
     <div>
       <h1>Shape</h1>
+
       <input
         type="color"
         onChange={setColor}

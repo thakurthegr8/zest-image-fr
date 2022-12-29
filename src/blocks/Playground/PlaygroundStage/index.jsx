@@ -3,25 +3,6 @@ import { Stage, Layer } from "react-konva";
 import { PlaygroundContext } from "../../../contexts/Playground";
 import { ShapeGenerator } from "../../../utils/shapes";
 
-const initialRectangles = [
-  {
-    x: 10,
-    y: 10,
-    width: 100,
-    height: 100,
-    fill: "red",
-    id: "rect1",
-  },
-  {
-    x: 150,
-    y: 150,
-    width: 100,
-    height: 100,
-    fill: "green",
-    id: "rect2",
-  },
-];
-
 const PlaygroundStage = () => {
   const {
     layers,
@@ -44,7 +25,7 @@ const PlaygroundStage = () => {
   };
 
   return (
-    <div className="col-span-3 flex bg-gray-200 justify-center items-center h-screen overflow-hidden">
+    <div className="col-span-3 flex bg-gray-100 justify-center items-center h-screen overflow-hidden">
       <Stage
         width={frameDimensions.width / 2}
         height={frameDimensions.height / 2}

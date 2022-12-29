@@ -1,7 +1,5 @@
 import { useRef, Fragment, useEffect } from "react";
-import { Rect, Circle, Layer, Transformer } from "react-konva";
-
-
+import { Rect, Circle, Layer, Transformer, Text } from "react-konva";
 
 export const ShapeGenerator = ({
   shapeProps,
@@ -60,8 +58,10 @@ export const ShapeGenerator = ({
     <Fragment>
       {type === "ellipse" && <Circle {...params} />}
       {type === "rectangle" && <Rect {...params} />}
+      {type === "text" && <Text {...params} />}
       {isSelected && (
         <Transformer
+          keepRatio={false}
           ref={trRef}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
@@ -95,6 +95,14 @@ export default [
       width: 100,
       height: 100,
       fill: "#f2f2f2",
+    },
+  },
+  {
+    type: "text",
+    params: {
+      fontSize: 20,
+      text: "Add New Text",
+      fill: "#000000",
     },
   },
 ];

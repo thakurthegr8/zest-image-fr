@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { PlaygroundContext } from "../../../contexts/Playground";
+import { CheckIcon } from "@heroicons/react/24/solid";
 
 const frames = [
   { type: "Portrait", height: 1600, width: 900 },
@@ -9,7 +10,7 @@ const frames = [
 ];
 
 const Frame = () => {
-  const { setFrameDimensions } = useContext(PlaygroundContext);
+  const { setFrameDimensions, frameDimensions } = useContext(PlaygroundContext);
   const onChange = (e) => {
     const form = e.target;
     const frameType = +form.value;
@@ -21,18 +22,34 @@ const Frame = () => {
   };
   return (
     <>
-      <h1>Frame</h1>
-      <form onChange={onChange}>
+      <h1 className="p-2 text-sm border-b">Frame</h1>
+      <form onChange={onChange} className="border-b">
         {frames.map((item, index) => (
-          <div>
-            <label htmlFor={`frame-type-${index}`}>{item.type}</label>
+          <label
+            htmlFor={`frame-type-${index}`}
+            className="flex cursor-pointer  justify-between items-center  px-3 py-2 hover:bg-gray-100 group-hover:cursor-pointer transition-all"
+          >
+            <label
+              className="text-sm flex gap-2 cursor-pointer items-center"
+              htmlFor={`frame-type-${index}`}
+            >
+              <span> {item.type}</span>
+              <span className="text-xs text-gray-400">
+                {item.width}x{item.height}
+              </span>
+            </label>
             <input
               type="radio"
               name="frameType"
               id={`frame-type-${index}`}
               value={index}
+              className="hidden"
             />
-          </div>
+            {item.height === frameDimensions.height &&
+              item.width === frameDimensions.width && (
+                <CheckIcon className="w-5 h-5 text-blue-500" />
+              )}
+          </label>
         ))}
       </form>
     </>
