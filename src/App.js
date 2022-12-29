@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import LayerPane from "./blocks/Playground/LayerPane";
+import PlaygroundNavigation from "./blocks/Playground/Navigation";
+import PlaygroundStage from "./blocks/Playground/PlaygroundStage";
+import ActionMenu from "./blocks/Playground/ActionMenu";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col">
+      <PlaygroundNavigation />
+      <section className="grid grid-cols-5 divide-x">
+        <LayerPane />
+        <PlaygroundStage />
+        <ActionMenu />
+      </section>
     </div>
   );
 }
