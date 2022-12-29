@@ -1,10 +1,7 @@
 import { useRef, Fragment, useEffect } from "react";
 import { Rect, Circle, Layer, Transformer } from "react-konva";
 
-const Shape = ({ type, ...props }) => {
-  if (type === "ellipse") return <Circle {...props} />;
-  return <Rect {...props} />;
-};
+
 
 export const ShapeGenerator = ({
   shapeProps,
@@ -87,7 +84,7 @@ export default [
       y: 150,
       width: 100,
       height: 100,
-      fill: "blue",
+      fill: "#c2c3f2",
     },
   },
   {
@@ -97,7 +94,7 @@ export default [
       y: 150,
       width: 100,
       height: 100,
-      fill: "blue",
+      fill: "#f2f2f2",
     },
   },
 ];

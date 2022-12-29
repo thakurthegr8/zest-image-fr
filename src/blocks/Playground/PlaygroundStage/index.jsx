@@ -23,24 +23,42 @@ const initialRectangles = [
 ];
 
 const PlaygroundStage = () => {
-  const { layers, frameDimensions, selectedShapeId, selectShape, setLayers } =
-    useContext(PlaygroundContext);
+  const {
+    layers,
+    frameDimensions,
+    selectedShapeId,
+    selectShape,
+    setLayers,
+    setCurrentAction,
+  } = useContext(PlaygroundContext);
   const [zoom, setZoom] = useState(1);
+  const checkDeselect = (e) => {
+    // deselect when clicked on empty area
+    const clickedOnEmpty = e.target === e.target.getStage();
+    if (clickedOnEmpty) {
+      selectShape(null);
+      setCurrentAction(0);
+    } else {
+      setCurrentAction(1);
+    }
+  };
 
   return (
     <div className="col-span-3 flex bg-gray-200 justify-center items-center h-screen overflow-hidden">
       <Stage
         width={frameDimensions.width / 2}
         height={frameDimensions.height / 2}
+        onMouseDown={checkDeselect}
+        onTouchStart={checkDeselect}
         className="bg-white border"
         style={{ transform: `scale(${zoom})` }}
+        title="layer"
       >
-        <Layer>
-          {layers.length !== 0 &&
-            layers.map((layer, i) => (
+        {layers.length !== 0 &&
+          layers.map((layer, i) => (
+            <Layer key={i}>
               <ShapeGenerator
                 type={layer.type}
-                key={i}
                 shapeProps={layer.params}
                 isSelected={i === selectedShapeId}
                 onSelect={() => {
@@ -52,8 +70,8 @@ const PlaygroundStage = () => {
                   setLayers(rects);
                 }}
               />
-            ))}
-        </Layer>
+            </Layer>
+          ))}
       </Stage>
 
       <div className="fixed bottom-0 text-2xl">

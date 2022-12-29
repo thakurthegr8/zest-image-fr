@@ -11,7 +11,7 @@ const Shape = () => {
   };
   return (
     <div>
-      <select onChange={setShapeMode}>
+      <select onChangeCapture={setShapeMode}>
         {shapes.map((item, index) => (
           <option value={index}>{item.type}</option>
         ))}
