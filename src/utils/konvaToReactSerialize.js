@@ -52,9 +52,9 @@ const updatePropsStyle = {
   },
   ellipse: (attr) => {
     return {
-      height: attr.x,
-      width: attr.x,
-      transform: `translate(${attr.x}px, ${attr.y}px)`,
+      height: attr.radius * 2,
+      width: attr.radius * 2,
+      transform: `translate(${attr.x-attr.radius}px, ${attr.y-attr.radius}px)`,
       backgroundColor: attr.fill,
       borderRadius: "50%",
       position:"absolute"
@@ -80,7 +80,7 @@ const getType = {
 
 const konvaToReactSerialize = (obj) => {
   const type = "div";
-  //   console.log(obj);
+    console.log(obj);
   const parentStyle = updatePropsStyle?.[obj.attrs.title]?.(obj.attrs) || {};
   // console.log(obj.children[0]);
   let children = [];
