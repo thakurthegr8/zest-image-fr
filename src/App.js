@@ -3,6 +3,7 @@ import LayerPane from "./blocks/Playground/LayerPane";
 import PlaygroundNavigation from "./blocks/Playground/Navigation";
 import PlaygroundStage from "./blocks/Playground/PlaygroundStage";
 import ActionMenu from "./blocks/Playground/ActionMenu";
+import { serialize } from "react-serialize";
 
 function App() {
   return (
